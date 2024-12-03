@@ -13,6 +13,7 @@ wss.on("connection",(socket)=>{
 
     socket.on("message",(message)=>{
         const parsedMessage = JSON.parse(message.toString());
+        socket.send("Hello from bros");
         if(parsedMessage.type == "join" ){
             allSockets.push({
                 socket,
