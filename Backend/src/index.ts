@@ -21,7 +21,6 @@ wss.on("connection",(socket)=>{
             console.log(parsedMessage);
         }
         if(parsedMessage.type == "chat"){
-            console.log("here");
             const currentUserRoom = allSockets.find((x)=> x.socket === socket )?.room;
             allSockets.forEach((s)=> s.room == currentUserRoom && s.socket != socket &&  s.socket.send(parsedMessage.payload.message));
         }
