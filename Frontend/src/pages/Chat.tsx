@@ -1,5 +1,3 @@
-
-
 import { useEffect, useState } from 'react'
 // import './App.css'
 import { Button } from '../components/ui/button'
@@ -11,7 +9,7 @@ interface Message{
   message: string;
 }
 
-function App() {
+function Chat() {
   const socketContext = useSocket();
   const socket = socketContext?.socket;
   const [messages,setMessages] = useState<Message[]>([]);
@@ -21,7 +19,6 @@ function App() {
       // Set up event handlers first
       socket.onmessage = (event) => {
         try {
-
           const data = JSON.parse(event.data);
           setMessages(messages => [...messages, {
             sender: "notuser",
@@ -89,4 +86,4 @@ function App() {
   )
 }
 
-export default App
+export default Chat;
