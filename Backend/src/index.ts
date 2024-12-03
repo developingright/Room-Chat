@@ -13,7 +13,6 @@ wss.on("connection",(socket)=>{
 
     socket.on("message",(message)=>{
         const parsedMessage = JSON.parse(message.toString());
-        socket.send("Hello from bros");
         if(parsedMessage.type == "join" ){
             allSockets.push({
                 socket,
@@ -24,7 +23,7 @@ wss.on("connection",(socket)=>{
         if(parsedMessage.type == "chat"){
             console.log("here");
             const currentUserRoom = allSockets.find((x)=> x.socket === socket )?.room;
-            allSockets.forEach((s)=> s.room == currentUserRoom && s.socket.send(parsedMessage.payload.message));
+            allSockets.forEach((s)=> s.room == currentUserRoom && s.socket != socket &&  s.socket.send(parsedMessage.payload.message));
         }
     })
    
