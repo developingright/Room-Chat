@@ -125,7 +125,7 @@ const Room = () => {
             Status:{" "}
             <span
               className={`${
-                connected !== "connected" ? "text-green-400" : "text-red-600"
+                connected == "Connected" ? "text-green-400" : "text-red-600"
               }`}
             >
               {connected}
