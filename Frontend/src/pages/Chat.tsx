@@ -123,6 +123,7 @@ function Chat() {
   }, [socket, roomId]);
 
   const handleSend = () => {
+    if(!message) return;
     if (socket?.readyState === WebSocket.OPEN) {
       socket.send(
         JSON.stringify({
